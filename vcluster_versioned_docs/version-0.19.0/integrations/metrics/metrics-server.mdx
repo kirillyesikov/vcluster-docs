@@ -14,7 +14,7 @@ Make sure the vCluster has access to the host clusters nodes.
 
 Install the [metrics server](https://github.com/kubernetes-sigs/metrics-server#installation) via the official method into the vCluster.
 
-Or Install via a single-file yaml manifest located below.
+Alternatively, install the metrics server using a single-file manifest located below. 
 
 Wait until the metrics server has started. You should be now able to use `kubectl top pods` and `kubectl top nodes` within the vCluster:
 ```
@@ -46,7 +46,7 @@ and apply the patch with kubectl:
 ```
 kubectl patch deployment metrics-server --patch-file metrics_patch.yaml -n kube-system
 ```
-:::info Alternatively, deploy the metrics server using a single-file manifest with metrics_patch already applied [metrics.yaml] (https://github.com/kirillyesikov/vcluster-docs/blob/main/vcluster_versioned_docs/version-0.19.0/integrations/metrics.yaml) :::
+:::info Deploy the metrics server using a single-file yaml manifest with metrics_patch already applied [metrics.yaml] (https://github.com/kirillyesikov/vcluster-docs/blob/main/vcluster_versioned_docs/version-0.19.0/integrations/metrics.yaml) :::
 
 
 
