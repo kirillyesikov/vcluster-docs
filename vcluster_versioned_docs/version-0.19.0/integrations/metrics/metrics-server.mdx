@@ -13,6 +13,7 @@ In case the above recommended method of getting metrics in vCluster using the me
 Make sure the vCluster has access to the host clusters nodes.
 
 Install the [metrics server](https://github.com/kubernetes-sigs/metrics-server#installation) via the official method into the vCluster.
+
 Or Install via a single-file manifest see below.
 
 Wait until the metrics server has started. You should be now able to use `kubectl top pods` and `kubectl top nodes` within the vCluster:
