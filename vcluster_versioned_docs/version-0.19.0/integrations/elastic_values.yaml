@@ -37,13 +37,3 @@ elasticsearch:
       username: "elastic"  # If security is enabled, provide the username
       password: "changeme"  # Provide the password
 
-# -------------------------
-# Kibana Configuration
-# -------------------------
-
- 
-
-# -------------------------
-# Logstash Configuration
-# -------------------------
-
