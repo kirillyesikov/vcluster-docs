@@ -5,9 +5,8 @@ sidebar_position: 2
 ---
 
 
-## Add the Helm repo and install a single-node ELK stack (make sure you have valid values.yaml's for all ELK components):
-### You can download sample values files from here ( 
-```yaml
+## Add the Helm repo and install a single-node ELK stack (make sure you have valid values.yaml's for all ELK components).You can download sample values files from here : [elastic_values.yaml] (https://github.com/kirillyesikov/vcluster-docs/blob/main/vcluster_versioned_docs/version-0.19.0/integrations/elastic_values.yaml), [logstash_values.yaml] (https://github.com/kirillyesikov/vcluster-docs/blob/main/vcluster_versioned_docs/version-0.19.0/integrations/logstash_values.yaml) [kibana_values.yaml] (https://github.com/kirillyesikov/vcluster-docs/blob/main/vcluster_versioned_docs/version-0.19.0/integrations/kibana_values.yaml)
+```
 
 helm repo add elastic https://helm.elastic.co
 
@@ -33,7 +32,7 @@ helm upgrade --install elk-filebeat elastic/filebeat -f filebeat_values.yaml -n 
       yellow open logstash-2022.10.09             n9GQnFB4RSWlWwkFG1848g 1 1 866   0 100.4kb 100.4kb  ◀─────┘
       green  open .kibana_7.17.3_001              BjXjQqXcRoiiGQg_zsrSrg 1 0  21   8   2.3mb   2.3mb
     ```
- 1. Next `port-forward` the kibana dashboard on its default port `5601` and navigate to [http://localhost:5601/app/management](http://localhost:5601/app/management) or
+ 1. Next `port-forward` the kibana dashboard on its default port `kubectl port-forward -n monitor svc/elk-kibana-kibana 5601` and navigate to [http://localhost:5601/app/management](http://localhost:5601/app/management) or
     choose "Stack Management" from left menu side bar.
     <img width="272" alt="Screenshot 2022-10-10 at 3 46 50 PM" src="https://user-images.githubusercontent.com/7482025/194844400-22e192b5-154c-4cf0-a1b3-e227ceca4419.png"></img>
  1. Choose "Index Patterns" and click on "Create index Pattern"
