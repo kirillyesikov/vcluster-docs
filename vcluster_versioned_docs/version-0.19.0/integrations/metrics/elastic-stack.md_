@@ -5,9 +5,13 @@ sidebar_position: 2
 ---
 
 
-## Install the ELK stack:
+## Add the Helm repo and install a single-node ELK stack (make sure you have valid values.yaml's for all ELK components):
+### You can download sample values files from here ( 
 ```yaml
-helm upgrade --install elk-elasticsearch elastic/elasticsearch -f elastic_values.yaml -n logging --create-namespace
+
+helm repo add elastic https://helm.elastic.co
+
+helm upgrade --install elk-elasticsearch elastic/elasticsearch -f elastic_values.yaml -n logging --create-namespace --set replicas=1
 helm upgrade --install elk-logstash elastic/logstash -f logstash_values.yaml -n logging
 helm upgrade --install elk-kibana elastic/kibana -f kibana_values.yaml -n logging
 
