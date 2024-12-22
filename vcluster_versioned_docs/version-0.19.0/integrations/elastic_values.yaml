@@ -29,7 +29,7 @@ elasticsearch:
       requests:
         storage: 10Gi
   service:
-    type: LoadBalancer  # Internal-only access
+    type: LoadBalancer  
     port: 9200
   security:
     enabled: true  # Set to true if you require security (username/password)
