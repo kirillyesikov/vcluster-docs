@@ -25,11 +25,11 @@ spec:
       maxUnavailable: 0
   selector:
     matchLabels:
-      app: my-app 
+      app: metrics-server 
   template:
     metadata:
       labels:
-        app: my-app 
+        app: metrics-server 
     spec:
       serviceAccountName: metrics-server
       volumes:
