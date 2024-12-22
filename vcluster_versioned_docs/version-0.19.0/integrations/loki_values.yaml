@@ -24,7 +24,7 @@ persistence:
 
 # Loki Service Configuration
 service:
-  type: LoadBalancer  # Change to LoadBalancer if you need an external IP
+  type: LoadBalancer  # Change to ClusterIP if you need an internal IP
   port: 3100
 
 # Ingress Configuration (optional)
