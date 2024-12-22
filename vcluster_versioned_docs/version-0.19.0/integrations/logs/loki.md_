@@ -6,10 +6,10 @@ sidebar_position: 2
 
 Install [Prometheus](../metrics/prometheus/) before installing Loki.
 
-### Install Loki:
+### Add the Helm repo and install Loki:
 ```
 helm repo add loki https://grafana.github.io/loki/charts
-helm upgrade --install loki --namespace=monitoring grafana/loki-stack --create-namespace
+helm upgrade --install loki -f loki_values.yaml --namespace=monitoring grafana/loki-stack --create-namespace
 ```
 
 ### Setup Data Sources in Grafana
