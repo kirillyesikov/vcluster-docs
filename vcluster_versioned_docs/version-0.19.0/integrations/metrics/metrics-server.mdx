@@ -57,5 +57,3 @@ Deploy the metrics server using a yaml manifest with metrics_patch already appli
 
 By default, vCluster will create a service for each node that redirects incoming traffic from within the vCluster to the node kubelet to vCluster itself. This means that if workloads within the vCluster try to scrape node metrics the traffic reaches vCluster first. Vcluster will redirect the incoming request to the host cluster, rewrite the response (pod names, pod namespaces etc) and return it to the requester.
 
-
-<MetricsServer />

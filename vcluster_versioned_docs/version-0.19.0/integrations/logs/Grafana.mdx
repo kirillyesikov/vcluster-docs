@@ -19,7 +19,7 @@ You can download sample values file from here : [loki_values.yaml](https://githu
 
 ```bash
 helm repo add loki https://grafana.github.io/loki/charts
-helm upgrade --install loki -f loki_values.yaml --namespace=monitoring grafana/loki-stack --create-namespace
+helm upgrade --install loki -f loki_values.yaml --namespace=monitor grafana/loki-stack --create-namespace
 ```
 
 ### Setup Data Sources in Grafana
