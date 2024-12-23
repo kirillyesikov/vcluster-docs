@@ -4,16 +4,12 @@ sidebar_label: Elastic Stack
 sidebar_position: 2
 ---
 
-
-<<<<<<<< HEAD:vcluster_versioned_docs/version-0.19.0/integrations/logs/ELK and fluentd.mdx
 ### Add the Helm repo and install a single-node ELK stack 
 
 Make sure you have the valid values.yaml's for all ELK components.
 You can download sample values files from here : [elastic_values.yaml](https://github.com/kirillyesikov/vcluster-docs/blob/main/vcluster_versioned_docs/version-0.19.0/integrations/elastic_values.yaml), [logstash_values.yaml](https://github.com/kirillyesikov/vcluster-docs/blob/main/vcluster_versioned_docs/version-0.19.0/integrations/logstash_values.yaml) [kibana_values.yaml](https://github.com/kirillyesikov/vcluster-docs/blob/main/vcluster_versioned_docs/version-0.19.0/integrations/kibana_values.yaml).
 
-========
-## Add the Helm repo and install a single-node ELK stack (make sure you have valid values.yaml's for all ELK components).You can download sample values files from here : [elastic_values.yaml](https://github.com/kirillyesikov/vcluster-docs/blob/main/vcluster_versioned_docs/version-0.19.0/integrations/elastic_values.yaml), [logstash_values.yaml](https://github.com/kirillyesikov/vcluster-docs/blob/main/vcluster_versioned_docs/version-0.19.0/integrations/logstash_values.yaml) [kibana_values.yaml](https://github.com/kirillyesikov/vcluster-docs/blob/main/vcluster_versioned_docs/version-0.19.0/integrations/kibana_values.yaml).
->>>>>>>> 01dcd924f1909b34c45b0ab68676a9c4100d58f2:vcluster_versioned_docs/version-0.19.0/integrations/metrics/elastic-stack.mdx
+### Add the Helm repo and install a single-node ELK stack (make sure you have valid values.yaml's for all ELK components).You can download sample values files from here : [elastic_values.yaml](https://github.com/kirillyesikov/vcluster-docs/blob/main/vcluster_versioned_docs/version-0.19.0/integrations/elastic_values.yaml), [logstash_values.yaml](https://github.com/kirillyesikov/vcluster-docs/blob/main/vcluster_versioned_docs/version-0.19.0/integrations/logstash_values.yaml) [kibana_values.yaml](https://github.com/kirillyesikov/vcluster-docs/blob/main/vcluster_versioned_docs/version-0.19.0/integrations/kibana_values.yaml).
 ```
 helm repo add elastic https://helm.elastic.co
 
@@ -26,22 +22,14 @@ helm upgrade --install elk-filebeat elastic/filebeat -f filebeat_values.yaml -n 
 
 ```
 
-<<<<<<<< HEAD:vcluster_versioned_docs/version-0.19.0/integrations/logs/ELK and fluentd.mdx
 ### Install fluentd imperatively using  the daemonset , you can download the deamonset from [github](https://github.com/fluent/fluentd-kubernetes-daemonset/blob/master/fluentd-daemonset-elasticsearch-rbac.yaml):
 
-========
-## Install fluentd imperatively using  the daemonset , you can download the deamonset from [github](https://github.com/fluent/fluentd-kubernetes-daemonset/blob/master/fluentd-daemonset-elasticsearch-rbac.yaml):
->>>>>>>> 01dcd924f1909b34c45b0ab68676a9c4100d58f2:vcluster_versioned_docs/version-0.19.0/integrations/metrics/elastic-stack.mdx
 ```
 kubectl apply -f fluentd-daemonset-elasticsearch-rbac.yaml
 ```
 Alternatively, you can also deploy via the [helm charts provided by fluentbit](https://docs.fluentbit.io/manual/installation/kubernetes#installing-with-helm-chart).
 
 
-<<<<<<<< HEAD:vcluster_versioned_docs/version-0.19.0/integrations/logs/ELK and fluentd.mdx
-
-========
->>>>>>>> 01dcd924f1909b34c45b0ab68676a9c4100d58f2:vcluster_versioned_docs/version-0.19.0/integrations/metrics/elastic-stack.mdx
 ### Setup ELK indexes
 1. Check for available indices and `port-forward` the elasticsearch-master service `kubectl port-forward -n logging svc/elasticsearch-master 9200` and visit the [http://localhost:9200/\_cat/indices](http://localhost:9200/_cat/indices),
     you should see the following `logstash-*` indices available:
