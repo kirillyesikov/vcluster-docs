@@ -5,7 +5,11 @@ sidebar_position: 2
 ---
 
 
-## Add the Helm repo and install a single-node ELK stack (make sure you have valid values.yaml's for all ELK components).You can download sample values files from here : [elastic_values.yaml] (https://github.com/kirillyesikov/vcluster-docs/blob/main/vcluster_versioned_docs/version-0.19.0/integrations/elastic_values.yaml), [logstash_values.yaml] (https://github.com/kirillyesikov/vcluster-docs/blob/main/vcluster_versioned_docs/version-0.19.0/integrations/logstash_values.yaml) [kibana_values.yaml] (https://github.com/kirillyesikov/vcluster-docs/blob/main/vcluster_versioned_docs/version-0.19.0/integrations/kibana_values.yaml)
+### Add the Helm repo and install a single-node ELK stack 
+
+Make sure you have the valid values.yaml's for all ELK components.
+You can download sample values files from here : [elastic_values.yaml](https://github.com/kirillyesikov/vcluster-docs/blob/main/vcluster_versioned_docs/version-0.19.0/integrations/elastic_values.yaml), [logstash_values.yaml](https://github.com/kirillyesikov/vcluster-docs/blob/main/vcluster_versioned_docs/version-0.19.0/integrations/logstash_values.yaml) [kibana_values.yaml](https://github.com/kirillyesikov/vcluster-docs/blob/main/vcluster_versioned_docs/version-0.19.0/integrations/kibana_values.yaml).
+
 ```
 helm repo add elastic https://helm.elastic.co
 
@@ -13,12 +17,22 @@ helm upgrade --install elk-elasticsearch elastic/elasticsearch -f elastic_values
 helm upgrade --install elk-logstash elastic/logstash -f logstash_values.yaml -n logging
 helm upgrade --install elk-kibana elastic/kibana -f kibana_values.yaml -n logging
 
-# optionally install filebeat if you plan to use filebeat instead of fluentd
+# optionally install filebeat if you plan to use filebeat instead of fluentd and configure a filebeat_values.yaml
 helm upgrade --install elk-filebeat elastic/filebeat -f filebeat_values.yaml -n logging
+
 ```
 
+### Install fluentd imperatively using  the daemonset , you can download the deamonset from [github](https://github.com/fluent/fluentd-kubernetes-daemonset/blob/master/fluentd-daemonset-elasticsearch-rbac.yaml):
+
+```
+kubectl apply -f fluentd-daemonset-elasticsearch-rbac.yaml
+```
+Alternatively, you can also deploy via the [helm charts provided by fluentbit](https://docs.fluentbit.io/manual/installation/kubernetes#installing-with-helm-chart).
+
+
+
 ### Setup ELK indexes
-1. Check for available indices - `port-forward` the `elasticsearch-master` on port `9100` and visit the [http://localhost:9200/\_cat/indices](http://localhost:9200/_cat/indices),
+1. Check for available indices and `port-forward` the elasticsearch-master service `kubectl port-forward -n logging svc/elasticsearch-master 9200` and visit the [http://localhost:9200/\_cat/indices](http://localhost:9200/_cat/indices),
     you should see the following `logstash-*` indices available:
     ```
       green  open .geoip_databases                rP6BifVQSuCv1XmctC0M_Q 1 0  40   0  38.4mb  38.4mb
