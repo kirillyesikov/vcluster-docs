@@ -8,7 +8,7 @@ sidebar_position: 2
 
 ### Add the Helm repo and install the Prometheus stack:
 
-```
+```bash
 helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
 helm upgrade --install prometheus prometheus-community/kube-prometheus-stack --namespace monitor --create-namespace
 ```
@@ -17,7 +17,7 @@ helm upgrade --install prometheus prometheus-community/kube-prometheus-stack --n
 ### Add the Helm repo and install Loki:
 You can download sample values file from here : [loki_values.yaml](https://github.com/kirillyesikov/vcluster-docs/blob/main/vcluster_versioned_docs/version-0.19.0/integrations/loki_values.yaml)
 
-```
+```bash
 helm repo add loki https://grafana.github.io/loki/charts
 helm upgrade --install loki -f loki_values.yaml --namespace=monitoring grafana/loki-stack --create-namespace
 ```
